@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body class="backgroundImage">
+    <div class="top"><h1>Weather App</h1></div>
+    <div class="main-data">
+      <table class="information">
+        <tr>
+          <th id="temperature">Error</th>
+        </tr>
+        <tr>
+          <th id="humidity">Error</th>
+        </tr>
+        <tr>
+          <th id="description">Error</th>
+        </tr>
+      </table>
+      <iframe
+        class="websiteTest"
+        id="openWeatherIframe"
+        src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=38.3072&lon=-2.8784&zoom=8"
+        title="testIframe"
+        width="600px"
+        height="600px"
+        scrolling="no"
+      ></iframe>
+    </div>
+    <hr />
+    <div class="footer">
+      <h3>Copyright &copy; Nevin Puri 2020</h3>
+    </div>
+  </body>
+</html>
