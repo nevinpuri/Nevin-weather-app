@@ -1,3 +1,4 @@
+var fs = require("fs");
 var express = require("express");
 var app = express();
 var path = require("path");
@@ -13,7 +14,7 @@ var server = https.createServer(
   },
   app
 );
-var io = require("socket.io")(server);
+var io = require("socket.io").listen(server);
 var port = process.env.PORT || 3000;
 var weather = require("openweather-apis");
 weather.setLang("en");
