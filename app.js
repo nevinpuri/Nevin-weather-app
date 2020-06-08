@@ -1,7 +1,18 @@
 var express = require("express");
 var app = express();
 var path = require("path");
-var server = require("http").createServer(app);
+var http = require("http");
+var https = require("https");
+var server = https.createServer(
+  {
+    key: fs.readFileSync("privkey.pem"),
+    cert: fs.readFileSync("cert.pem"),
+    ca: fs.readFileSync("chain.pem"),
+    requestCert: false,
+    rejectUnauthorized: false,
+  },
+  app
+);
 var io = require("socket.io")(server);
 var port = process.env.PORT || 3000;
 var weather = require("openweather-apis");
@@ -17,7 +28,6 @@ app.use(express.static(path.join(__dirname, "public")));
 io.on("connection", (socket) => {
   console.log("someone connected");
   socket.on("client send location", (latitude, longitude) => {
-    //weather.setCoordinate(latitude, longitude);
     getWeatherData(latitude, longitude);
   });
 
