@@ -54,7 +54,7 @@ const getWeatherData = (latitude, longitude) => {
 // TODO : rewrite this as a promise
 
 const getWeatherData = (latitude, longitude) => {
-  var weatherData = {
+  let weatherData = {
     temperature: "Unknown",
     humidity: "Unknown",
     description: "Unknown",
