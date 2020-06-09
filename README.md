@@ -6,3 +6,5 @@ Weather app made by Victor and Nevin in a few days using the openweather api. No
 
 Make different gifs for each of the different descriptions
 Make everything async so I can keep on refreshing the weather every couple of seconds until it loads
+
+Recode the entire thing because right now its kind of slow and not too greatly coded

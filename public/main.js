@@ -7,8 +7,7 @@ $(function () {
   var $openWeatherIframe = document.getElementById("openWeatherIframe");
 
   var test54 = document.getElementById("backgroundImage");
-  getLocation();
-  setMapPos();
+
   //window.onload = () => {};
 
   socket.on("server send weather", (temp) => {
@@ -51,4 +50,8 @@ $(function () {
         "&zoom=8";
     });
   };
+
+  // starting point
+  getLocation();
+  setMapPos();
 });
