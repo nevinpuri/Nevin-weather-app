@@ -56,15 +56,15 @@ const getWeatherData = (latitude, longitude) => {
   weather.setCoordinate(latitude, longitude);
   let temp = weather.getTemperature((err, temp) => {
     if (err) throw err;
-    return temp;
+    return this.temp;
   });
   let humidity = weather.getHumidity((err, humidity) => {
     if (err) throw err;
-    return humidity;
+    return this.humidity;
   });
   let description = weather.getDescription((err, humidity) => {
     if (err) throw err;
-    return humidity;
+    return this.description;
   });
   io.emit("server send weather data", temp, humidity, description);
 };
