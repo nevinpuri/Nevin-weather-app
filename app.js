@@ -45,59 +45,6 @@ io.on("connection", (socket) => {
     getPhoto();
   });
 });
-/*
-const getWeatherData = (latitude, longitude) => {
-  weather.setCoordinate(latitude, longitude);
-  weather.getTemperature((err, temp) => {
-    io.emit("server send weather", temp);
-  });
-  weather.getHumidity((err, humidity) => {
-    io.emit("server send humidity", humidity);
-  });
-  weather.getDescription((err, description) => {
-    io.emit("server send description", description);
-  }); 
-};
-*/
-// TODO : rewrite this as a promise
-/*
-const getWeatherData = (latitude, longitude) => {
-  var weatherData = {
-    temperature: "Unknown",
-    humidity: "Unknown",
-    description: "Unknown",
-  };
-  weather.setCoordinate(latitude, longitude);
-  var test;
-  weather.getTemperature((err, temp) => {
-    test = temp;
-    console.log("temp");
-    weatherData[temperature] = temp;
-  });
-  weather.getHumidity((err, humidity) => {
-    weatherData[humidity] = humidity;
-    console.log("humidity");
-  });
-  weather.getDescription((err, description) => {
-    weatherData[description] = description;
-    console.log("description");
-  });
-  console.log(weatherData);
-  console.log(test);
-  io.emit("server send weather data", weatherData);
-};
-*/
-
-/*
-const getWeatherData = (latitude, longitude) => {
-  setTimeout(() => {
-    console.log(weatherData);
-  }, 1000);
-  weather.getTemperature((err, temp) => {
-    weatherData["temperature"] = temp;
-    console.log(temp);
-  });
-}; */
 
 const getWeatherData = (latitude, longitude) => {
   return new Promise((resolve, reject) => {
