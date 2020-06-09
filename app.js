@@ -2,18 +2,7 @@ var fs = require("fs");
 var express = require("express");
 var app = express();
 var path = require("path");
-var http = require("http");
-var https = require("https");
-var server = https.createServer(
-  {
-    key: fs.readFileSync("privkey.pem"),
-    cert: fs.readFileSync("cert.pem"),
-    ca: fs.readFileSync("chain.pem"),
-    requestCert: false,
-    rejectUnauthorized: false,
-  },
-  app
-);
+var server = require("http").createServer(app);
 var io = require("socket.io").listen(server);
 var port = process.env.PORT || 3000;
 var weather = require("openweather-apis");
