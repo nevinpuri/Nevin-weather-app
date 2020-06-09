@@ -21,13 +21,14 @@ weather.setLang("en");
 weather.setAPPID("7534abbbcc4e9893cbfb5684ef75fb52");
 
 server.listen(port, () => {
+  console.log("Simple Weather App - By Nevin");
+  console.log("https://github.com/Nevin1901/Nevin-weather-app");
   console.log("server listening on port 3000");
 });
 
 app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", (socket) => {
-  console.log("someone connected");
   socket.on("client send location", (latitude, longitude) => {
     getWeatherData(latitude, longitude);
   });
