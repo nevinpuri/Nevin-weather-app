@@ -61,13 +61,16 @@ const getWeatherData = (latitude, longitude) => {
   };
   weather.setCoordinate(latitude, longitude);
   weather.getTemperature((err, temp) => {
+    console.log("temp");
     weatherData.temperature = temp;
   });
   weather.getHumidity((err, humidity) => {
     weatherData.humidity = humidity;
+    console.log("humidity");
   });
   weather.getDescription((err, description) => {
     weatherData.description = description;
+    console.log("description");
   });
   console.log(weatherData);
   io.emit("server send weather data", weatherData);
