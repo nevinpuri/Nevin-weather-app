@@ -20,6 +20,12 @@ var weather = require("openweather-apis");
 weather.setLang("en");
 weather.setAPPID("7534abbbcc4e9893cbfb5684ef75fb52");
 
+var weatherData = {
+  temperature: "Unknown",
+  humidity: "Unknown",
+  description: "Unknown",
+};
+
 server.listen(port, () => {
   console.log("Simple Weather App - By Nevin");
   console.log("https://github.com/Nevin1901/Nevin-weather-app");
@@ -82,11 +88,6 @@ const getWeatherData = (latitude, longitude) => {
 };
 */
 
-var weatherData = {
-  temperature: "Unknown",
-  humidity: "Unknown",
-  description: "Unknown",
-};
 /*
 const getWeatherData = (latitude, longitude) => {
   setTimeout(() => {
@@ -106,7 +107,7 @@ const getWeatherData = (latitude, longitude) => {
       } else {
         resolve();
       }
-    }, 2000);
+    }, 1000);
     weather.getTemperature((err, temp) => {
       weatherData["temperature"] = temp;
     });
