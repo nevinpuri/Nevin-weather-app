@@ -54,11 +54,19 @@ const getWeatherData = (latitude, longitude) => {
 // TODO : rewrite this as a promise
 
 const getWeatherData = (latitude, longitude) => {
+  var temperature, humidity, description;
   weather.setCoordinate(latitude, longitude);
-  io.emit(
-    "server send weather data",
-    weather.getTemperature((err, temp) => {
-      return temp;
-    })
-  );
+  weather.getTemperature((err, temp) => {
+    if (err) throw err;
+    temperature = temp;
+  });
+  weather.getHumidity((err, _humidity) => {
+    if (err) throw err;
+    humidity = _humidity;
+  });
+  weather.getDescription((err, _description) => {
+    if (err) throw err;
+    description = _description;
+  });
+  io.emit("server send weather data", temperature, humidity, data);
 };
