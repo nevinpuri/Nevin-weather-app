@@ -40,14 +40,11 @@ $(function () {
 
   // TODO : Just make all these 3 one socket which sends temp, humidity, and data
 
-  socket.on(
-    "server send weather data",
-    (temperature, humidity, description) => {
-      $temp.innerHTML = "🌡️ Temperature: " + temperature + "°C";
-      $humidity.innerHTML = "💨 % Humidity: " + humidity;
-      $description.innerHTML = "📜 Description: " + description;
-    }
-  );
+  socket.on("server send weather data", (weatherData) => {
+    $temp.innerHTML = "🌡️ Temperature: " + weatherData.temperature + "°C";
+    $humidity.innerHTML = "💨 % Humidity: " + weatherData.humidity;
+    $description.innerHTML = "📜 Description: " + weatherData.description;
+  });
 
   /*
   socket.on("server send weather", (temp) => {

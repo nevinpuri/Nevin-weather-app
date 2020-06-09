@@ -62,7 +62,6 @@ const getWeatherData = (latitude, longitude) => {
   weather.setCoordinate(latitude, longitude);
   weather.getTemperature((err, temp) => {
     weatherData.temperature = temp;
-    console.log("hello");
   });
   weather.getHumidity((err, humidity) => {
     weatherData.humidity = humidity;
