@@ -30,7 +30,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", (socket) => {
   socket.on("client send location", (latitude, longitude) => {
-    getWeatherData(latitude, longitude).then(sendWeatherData);
+    getWeatherData(latitude, longitude)
+      .then(sendWeatherData)
+      .catch((err) => console.log(err));
   });
 
   socket.on("client request photo", () => {
@@ -104,7 +106,7 @@ const getWeatherData = (latitude, longitude) => {
       } else {
         resolve();
       }
-    }, 1000);
+    }, 2000);
     weather.getTemperature((err, temp) => {
       weatherData["temperature"] = temp;
     });
