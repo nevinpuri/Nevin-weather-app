@@ -39,6 +39,14 @@ $(function () {
   };
 
   // TODO : Just make all these 3 one socket which sends temp, humidity, and data
+
+  socket.on("server send weather data", (temp, humidity, description) => {
+    $temp.innerHTML = "🌡️ Temperature: " + temp + "°C";
+    $humidity.innerHTML = "💨 % Humidity: " + humidity;
+    $description.innerHTML = "📜 Description: " + description;
+  });
+
+  /*
   socket.on("server send weather", (temp) => {
     $temp.innerHTML = "🌡️ Temperature: " + temp + "°C";
   });
@@ -50,7 +58,7 @@ $(function () {
   socket.on("server send description", (description) => {
     $description.innerHTML = "📜 Description: " + description;
   });
-
+*/
   // starting point
   getLocation();
   setMapPos();

@@ -37,7 +37,7 @@ io.on("connection", (socket) => {
     getPhoto();
   });
 });
-
+/*
 const getWeatherData = (latitude, longitude) => {
   weather.setCoordinate(latitude, longitude);
   weather.getTemperature((err, temp) => {
@@ -48,9 +48,14 @@ const getWeatherData = (latitude, longitude) => {
   });
   weather.getDescription((err, description) => {
     io.emit("server send description", description);
-  });
+  }); 
 };
+*/
 
-const getPhoto = () => {
-  console.log("hello guys");
+const getWeatherData = (latitude, longitude) => {
+  weather.setCoordinate(latitude, longitude);
+  let temp = weather.getTemperature();
+  let humidity = weather.getHumidity();
+  let description = weather.getDescription();
+  io.emit("server send weather data", temp, humidity, description);
 };
