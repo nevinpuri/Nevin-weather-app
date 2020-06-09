@@ -52,7 +52,7 @@ const getWeatherData = (latitude, longitude) => {
 };
 */
 // TODO : rewrite this as a promise
-
+/*
 const getWeatherData = (latitude, longitude) => {
   var weatherData = {
     temperature: "Unknown",
@@ -77,4 +77,20 @@ const getWeatherData = (latitude, longitude) => {
   console.log(weatherData);
   console.log(test);
   io.emit("server send weather data", weatherData);
+};
+*/
+
+var weatherData = {
+  temperature: "Unknown",
+  humidity: "Unknown",
+  description: "Unknown",
+};
+
+const getWeatherData = (latitude, longitude) => {
+  setTimeout(() => {
+    weather.getTemperature((err, temp) => {
+      weatherData["temperature"] = temp;
+    });
+  }, 1000);
+  console.log(weatherData);
 };
