@@ -59,10 +59,10 @@ const getWeatherData = (latitude, longitude) => {
   weather.getTemperature((err, temp) => {
     weatherData.push(temp);
   });
-  weather.getHumidity((err, _humidity) => {
+  weather.getHumidity((err, humidity) => {
     weatherData.push(humidity);
   });
-  weather.getDescription((err, _description) => {
+  weather.getDescription((err, description) => {
     weatherData.push(description);
   });
   console.log(weatherData);
