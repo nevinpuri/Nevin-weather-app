@@ -37,6 +37,10 @@ $(function () {
       "&zoom=8";
   };
 
+  unsplashTest.onclick = () => {
+    io.emit("client send unsplash test");
+  };
+
   // TODO : Just make all these 3 one socket which sends temp, humidity, and data
 
   socket.on("server send weather data", (weatherData) => {
