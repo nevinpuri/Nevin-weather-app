@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", (socket) => {
   socket.on("client send location", (latitude, longitude) => {
-    getWeatherData(latitude, longitude);
+    getWeatherData(latitude, longitude).then(readWeatherData);
   });
 
   socket.on("client request photo", () => {
@@ -85,7 +85,7 @@ var weatherData = {
   humidity: "Unknown",
   description: "Unknown",
 };
-
+/*
 const getWeatherData = (latitude, longitude) => {
   setTimeout(() => {
     console.log(weatherData);
@@ -94,4 +94,25 @@ const getWeatherData = (latitude, longitude) => {
     weatherData["temperature"] = temp;
     console.log(temp);
   });
+}; */
+
+const getWeatherData = (latitude, longitude) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (weatherData["temperature"] === "Unknown") {
+        reject("Error: Still equals same value");
+      } else {
+        resolve();
+      }
+    }, 1000);
+    weather.getTemperature((err, temp) => {
+      weatherData["temperature"] = temp;
+    });
+  });
+};
+
+const readWeatherData = () => {
+  setTimeout(() => {
+    console.log(weatherData);
+  }, 1000);
 };
