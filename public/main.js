@@ -6,23 +6,10 @@ $(function () {
   var $description = document.getElementById("description");
   var $openWeatherIframe = document.getElementById("openWeatherIframe");
 
-  var test54 = document.getElementById("backgroundImage");
+  var bgImage = document.getElementById("backgroundImage");
+  // TODO : Implement unsplash api random background image which gets its description from openweather
 
-  //window.onload = () => {};
-
-  socket.on("server send weather", (temp) => {
-    $temp.innerHTML = "🌡️ Temperature: " + temp + "°C";
-  });
-
-  socket.on("server send humidity", (humidity) => {
-    $humidity.innerHTML = "💨 % Humidity: " + humidity;
-  });
-
-  socket.on("server send description", (description) => {
-    $description.innerHTML = "📜 Description: " + description;
-  });
-
-  function getLocation() {
+  const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         sendPos(position);
@@ -30,7 +17,7 @@ $(function () {
     } else {
       console.log("Error: Unable to get position");
     }
-  }
+  };
 
   const sendPos = (position) => {
     socket.emit(
@@ -50,6 +37,19 @@ $(function () {
         "&zoom=8";
     });
   };
+
+  // TODO : Just make all these 3 one socket which sends temp, humidity, and data
+  socket.on("server send weather", (temp) => {
+    $temp.innerHTML = "🌡️ Temperature: " + temp + "°C";
+  });
+
+  socket.on("server send humidity", (humidity) => {
+    $humidity.innerHTML = "💨 % Humidity: " + humidity;
+  });
+
+  socket.on("server send description", (description) => {
+    $description.innerHTML = "📜 Description: " + description;
+  });
 
   // starting point
   getLocation();
