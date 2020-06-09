@@ -68,5 +68,5 @@ const getWeatherData = (latitude, longitude) => {
     if (err) throw err;
     description = _description;
   });
-  io.emit("server send weather data", temperature, humidity, data);
+  io.emit("server send weather data", temperature, humidity, description);
 };
