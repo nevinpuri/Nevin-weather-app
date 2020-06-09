@@ -45,19 +45,5 @@ $(function () {
     $description.innerHTML = "📜 Description: " + weatherData.description;
   });
 
-  /*
-  socket.on("server send weather", (temp) => {
-    $temp.innerHTML = "🌡️ Temperature: " + temp + "°C";
-  });
-
-  socket.on("server send humidity", (humidity) => {
-    $humidity.innerHTML = "💨 % Humidity: " + humidity;
-  });
-
-  socket.on("server send description", (description) => {
-    $description.innerHTML = "📜 Description: " + description;
-  });
-*/
-  // starting point
   getLocation();
 });
