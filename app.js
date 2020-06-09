@@ -5,13 +5,10 @@ var path = require("path");
 var server = require("http").createServer(app);
 var io = require("socket.io").listen(server);
 var port = process.env.PORT || 3000;
-const Unsplash = require("unsplash-js").default;
-const unsplash = new Unsplash({
-  accessKey: "zitIfdGC9u1Xjp9vY-rUSdD4wXdEH8_NB-QdK9zkzW0",
-});
 var weather = require("openweather-apis");
 weather.setLang("en");
 weather.setAPPID("7534abbbcc4e9893cbfb5684ef75fb52");
+const fetch = require("node-fetch");
 
 var weatherData = {
   temperature: "Unknown",
@@ -69,14 +66,13 @@ const sendWeatherData = () => {
 };
 
 const testImage = () => {
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      unsplash.photos
-        .getPhoto("mtNweauBsMQ")
-        .then(res.toJson)
-        .then((json) => {
-          console.log(json);
-        });
-    }, 1000);
-  });
+  fetch(
+    "https://api.unsplash.com/photos/random/?client_id=zitIfdGC9u1Xjp9vY-rUSdD4wXdEH8_NB-QdK9zkzW0&query=broken-clouds&orietation=landscape"
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
+      console.log(json["urls"]["full"]);
+    })
+    .catch((err) => console.log(err));
 };

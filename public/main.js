@@ -38,7 +38,7 @@ $(function () {
   };
 
   unsplashTest.onclick = () => {
-    io.emit("client send unsplash test");
+    socket.emit("client send unsplash test");
   };
 
   // TODO : Just make all these 3 one socket which sends temp, humidity, and data
