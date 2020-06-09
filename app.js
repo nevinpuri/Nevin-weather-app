@@ -88,10 +88,10 @@ var weatherData = {
 
 const getWeatherData = (latitude, longitude) => {
   setTimeout(() => {
-    weather.getTemperature((err, temp) => {
-      weatherData["temperature"] = temp;
-      console.log(temp);
-    });
+    console.log(weatherData);
   }, 1000);
-  console.log(weatherData);
+  weather.getTemperature((err, temp) => {
+    weatherData["temperature"] = temp;
+    console.log(temp);
+  });
 };
