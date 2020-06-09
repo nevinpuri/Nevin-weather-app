@@ -54,12 +54,13 @@ const getWeatherData = (latitude, longitude) => {
 // TODO : rewrite this as a promise
 const getWeatherData = (latitude, longitude) => {
   weather.setCoordinate(latitude, longitude);
-  var hi = (weather.getTemperature = (err, temp) => {
+  weather.getTemperature = (err, temp) => {
+    var test = temp;
     if (err) throw err;
     else {
-      callback(temp);
+      callback(test);
     }
-  });
-  console.log(hi);
+  };
+  console.log(test);
   io.emit("server send weather data", this.temp);
 };
