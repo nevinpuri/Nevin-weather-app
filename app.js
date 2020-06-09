@@ -120,5 +120,5 @@ const getWeatherData = (latitude, longitude) => {
 };
 
 const sendWeatherData = () => {
-  socket.io.emit("server send weather data", weatherData);
+  io.emit("server send weather data", weatherData);
 };
