@@ -7,11 +7,9 @@ $(function () {
   var $openWeatherIframe = document.getElementById("openWeatherIframe");
 
   var test54 = document.getElementById("backgroundImage");
-
-  window.onload = () => {
-    getLocation();
-    setMapPos();
-  };
+  getLocation();
+  setMapPos();
+  //window.onload = () => {};
 
   socket.on("server send weather", (temp) => {
     $temp.innerHTML = "🌡️ Temperature: " + temp + "°C";
