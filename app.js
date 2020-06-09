@@ -107,7 +107,7 @@ const getWeatherData = (latitude, longitude) => {
       } else {
         resolve();
       }
-    }, 1000);
+    }, 500);
     weather.getTemperature((err, temp) => {
       weatherData["temperature"] = temp;
     });
