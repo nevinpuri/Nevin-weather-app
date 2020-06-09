@@ -66,5 +66,5 @@ const getWeatherData = (latitude, longitude) => {
     weatherData.push(description);
   });
   console.log(temperature + humidity + description);
-  io.emit("server send weather data", temperature, humidity, description);
+  io.emit("server send weather data", weatherData);
 };
