@@ -33,8 +33,10 @@ server.listen(port, () => {
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("*", (req, res) => {
-  Response.redirect("https://" + req.headers.host + req.url);
+app.use((req, res, next) => {
+  if (req.header("x-forwarded-proto") !== "https")
+    res.redirect(`https://${req.header("host")}${req.url}`);
+  else next();
 });
 
 io.on("connection", (socket) => {
