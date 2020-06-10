@@ -53,7 +53,8 @@ td {
 iframe {
   overflow: hidden;
   margin-bottom: 10px;
-  border: none;
+  border: transparent;
+  border-radius: 10px;
 }
 .footer {
   text-align: center;
