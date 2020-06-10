@@ -74,7 +74,7 @@ const getWeatherData = (latitude, longitude) => {
 };
 
 const sendWeatherData = () => {
-  io.emit("server send weather data", weatherData);
+  socket.emit("server send weather data", weatherData);
 };
 
 const fetchImage = () => {
@@ -87,7 +87,7 @@ const fetchImage = () => {
     .then((res) => res.json())
     .then((json) => {
       setTimeout(() => {
-        io.emit("server send background image", authorData);
+        socket.emit("server send background image", authorData);
       }, 100);
       authorData.name = json["user"]["name"];
       authorData.profile = json["links"]["html"];

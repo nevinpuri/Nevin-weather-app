@@ -8,7 +8,6 @@ $(function () {
   var $backgroundImage = document.getElementById("backgroundImage");
 
   var $name = document.getElementById("name");
-  // TODO : Implement unsplash api random background image which gets its description from openweather
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -25,10 +24,8 @@ $(function () {
     console.log(position);
     socket.emit(
       "client send location",
-      position.coords.latitude,
-      position.coords.longitude
-      //parseFloat(position.coords.latitude).toFixed(3),
-      //parseFloat(position.coords.longitude).toFixed(3)
+      parseFloat(position.coords.latitude).toFixed(3),
+      parseFloat(position.coords.longitude).toFixed(3)
     );
   };
 
@@ -55,7 +52,6 @@ $(function () {
   const setBackgroundImage = (image) => {
     $backgroundImage.style.backgroundImage = "url(" + image + ")";
     $backgroundImage.style.backgroundSize = "center";
-    //document.body.style.backgroundImage = "url(" + image + ")";
   };
 
   const requestImage = () => {
