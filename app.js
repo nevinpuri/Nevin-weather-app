@@ -33,6 +33,10 @@ server.listen(port, () => {
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("*", (req, res) => {
+  Response.redirect("https://" + req.headers.host + req.url);
+});
+
 io.on("connection", (socket) => {
   socket.on("client send location", (latitude, longitude) => {
     getWeatherData(latitude, longitude)
