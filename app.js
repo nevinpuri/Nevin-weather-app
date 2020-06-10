@@ -49,49 +49,49 @@ io.on("connection", (socket) => {
   socket.on("client request unsplash image", () => {
     fetchImage();
   });
-});
 
-const getWeatherData = (latitude, longitude) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (weatherData["temperature"] === "Unknown") {
-        reject("Error: Still equals same value");
-      } else {
-        resolve();
-      }
-    }, 250);
-    weather.setCoordinate(latitude, longitude);
-    weather.getTemperature((err, temp) => {
-      weatherData["temperature"] = temp;
-    });
-    weather.getHumidity((err, humidity) => {
-      weatherData["humidity"] = humidity;
-    });
-    weather.getDescription((err, description) => {
-      weatherData["description"] = description;
-    });
-  });
-};
-
-const sendWeatherData = () => {
-  io.emit("server send weather data", weatherData);
-};
-
-const fetchImage = () => {
-  var query = weatherData["description"].replace(/\s+/g, "-").toLowerCase();
-  fetch(
-    "https://api.unsplash.com/photos/random/?client_id=zitIfdGC9u1Xjp9vY-rUSdD4wXdEH8_NB-QdK9zkzW0&query=" +
-      query +
-      "&orientation=landscape"
-  )
-    .then((res) => res.json())
-    .then((json) => {
+  const getWeatherData = (latitude, longitude) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
-        io.emit("server send background image", authorData);
-      }, 100);
-      authorData.name = json["user"]["name"];
-      authorData.profile = json["links"]["html"];
-      authorData.image = json["urls"]["full"];
-    })
-    .catch((err) => console.log(err));
-};
+        if (weatherData["temperature"] === "Unknown") {
+          reject("Error: Still equals same value");
+        } else {
+          resolve();
+        }
+      }, 250);
+      weather.setCoordinate(latitude, longitude);
+      weather.getTemperature((err, temp) => {
+        weatherData["temperature"] = temp;
+      });
+      weather.getHumidity((err, humidity) => {
+        weatherData["humidity"] = humidity;
+      });
+      weather.getDescription((err, description) => {
+        weatherData["description"] = description;
+      });
+    });
+  };
+
+  const sendWeatherData = () => {
+    socket.emit("server send weather data", weatherData);
+  };
+
+  const fetchImage = () => {
+    var query = weatherData["description"].replace(/\s+/g, "-").toLowerCase();
+    fetch(
+      "https://api.unsplash.com/photos/random/?client_id=zitIfdGC9u1Xjp9vY-rUSdD4wXdEH8_NB-QdK9zkzW0&query=" +
+        query +
+        "&orientation=landscape"
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        setTimeout(() => {
+          socket.emit("server send background image", authorData);
+        }, 100);
+        authorData.name = json["user"]["name"];
+        authorData.profile = json["links"]["html"];
+        authorData.image = json["urls"]["full"];
+      })
+      .catch((err) => console.log(err));
+  };
+});
