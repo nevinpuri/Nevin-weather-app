@@ -8,8 +8,8 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>
   </head>
-  <body class="backgroundImage">
-    <div class="top"><h1>Weather App</h1></div>
+  <body class="backgroundImage" id="backgroundImage">
+    <div class="top"><h1>Nevin's Weather App</h1></div>
     <div class="main-data">
       <table class="information">
         <tr>
@@ -31,11 +31,14 @@
         height="600px"
         scrolling="no"
       ></iframe>
+      <p>
+        <a class="unsplashInfo" id="unsplashInfo">Photo by </a
+        ><a href="#" id="name" class="unsplashInfo">Error</a
+        ><a class="unsplashInfo"> on </a
+        ><a href="https://unsplash.com" class="unsplashInfo">Unsplash</a>
+      </p>
     </div>
     <hr />
-    <button id="unsplashTest">click me</button>
-    <div class="footer">
-      <h3>Still being worked on!</h3>
-    </div>
+    <div class="footer"></div>
   </body>
 </html>
