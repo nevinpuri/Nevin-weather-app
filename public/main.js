@@ -47,7 +47,8 @@ $(function () {
   socket.on("server send background image", (authorData) => {
     setBackgroundImage(authorData.image);
     $name.innerHTML = authorData.name;
-    $name.href = authorData.profile;
+    $name.href =
+      authorData.profile + "?utm_source=Nevin-weather-app&utm_medium=referral";
   });
   const setBackgroundImage = (image) => {
     $backgroundImage.style.backgroundImage = "url(" + image + ")";
