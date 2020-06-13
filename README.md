@@ -18,7 +18,7 @@ npm i
 node index.js
 ```
 
-Then go to `localhost:3000` and it should be working. Also, since this uses your location to get the weather, some privacy respective browsers might block it (like waterfox), so I reccomend that you either use firefox or chrome
+Then go to `localhost:3000` and it should be working. Also, since this uses your location to get the weather, some privacy respective browsers might block it (like waterfox), so I recommend that you either use firefox or chrome
 
 # TODO
 
