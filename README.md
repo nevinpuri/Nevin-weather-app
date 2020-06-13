@@ -1,6 +1,6 @@
 # Nevin-weather-app
 
-https://nevin-weather-app.herokuapp.com
+## https://nevin-weather-app.herokuapp.com
 
 A website which will tell you the weather in your area, show you a map of the weather around your area, and show a cool unsplash image as the background which (hopefully) relates to the current weather forecast
 
